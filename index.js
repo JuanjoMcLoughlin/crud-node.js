@@ -2,6 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const app =express();
 
+const path = require('path');
+
+app.use(express.static(path.join(__dirname,'public')));
+//para hacer la ruta absoluta.
+
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'src/views'));
+//seteo el motor de vistas.
+
 const PORT = process.env.PORT || 3005;
 
 const mainRouter = require('./src/routes/main.router');
