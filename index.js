@@ -4,9 +4,11 @@ const app =express();
 
 const PORT = process.env.PORT || 3005;
 
-app.get('/',(req,res)=>{
-    res.send('Hola Mundo!');
-});
+const mainRouter = require('./src/routes/main.router');
+app.use(mainRouter);
+
+const productosRouter = require('./src/routes/productos.router');
+app.use(productosRouter);
 
 app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`);
